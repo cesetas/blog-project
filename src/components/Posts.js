@@ -4,18 +4,18 @@ import { PostCard } from "./PostCard";
 import { PostWidget } from "./PostWidget";
 import { getPosts } from "../services/index";
 
-export const Posts = ({ posts }) => {
-  console.log(posts);
-  // const posts = [
-  //     {title: "Blog", excerpt:"Learn about .."},
-  //     {title: "Movie", excerpt:"Coming soon .."},
-  // ]
+export const Posts = () => {
+
+  const posts = [
+      {title: "Blog", excerpt:"Learn about .."},
+      {title: "Movie", excerpt:"Coming soon .."},
+  ]
   return (
     <div className="container mx-auto px-10 mb-8">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="lg:col-span-8 col-span-1">
           {posts?.map((post) => (
-            <PostCard post={post.node} key={post.title} />
+            <PostCard post={post} key={post.title} />
           ))}
         </div>
         <div className="lg:col-span-4 col-span-1">
@@ -29,10 +29,10 @@ export const Posts = ({ posts }) => {
   );
 };
 
-export async function getStaticProps() {
-  const posts = (await getPosts()) || [];
+// export async function getStaticProps() {
+//   const posts = (await getPosts()) || [];
 
-  return {
-    props: {posts},
-  };
-}
+//   return {
+//     props: {posts},
+//   };
+// }
