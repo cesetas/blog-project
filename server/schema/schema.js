@@ -1,3 +1,4 @@
+const { GraphQLList } = require("graphql");
 const graphql = require("graphql");
 
 const {GraphQLObjectType, GraphQLString, GraphQLID, GraphQLSchema} = graphql;
@@ -24,6 +25,12 @@ const AuthorType = new GraphQLObjectType({
         name: {type: GraphQLString},
         bio: {type: GraphQLString},
         photo: {type: GraphQLString},
+        posts: {
+            type: GraphQLList(PostType),
+            resolve(parent, args){
+                //get data from db/other source
+            }
+        }
     })
 });
 
