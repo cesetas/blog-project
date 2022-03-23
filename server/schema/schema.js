@@ -26,7 +26,7 @@ const AuthorType = new GraphQLObjectType({
         bio: {type: GraphQLString},
         photo: {type: GraphQLString},
         posts: {
-            type: GraphQLList(PostType),
+            type: new GraphQLList(PostType),
             resolve(parent, args){
                 //get data from db/other source
             }
@@ -50,7 +50,19 @@ const RootQuery = new GraphQLObjectType({
             resolve(parent, args){
                 //get data from db/other source
             }
-        }        
+        },
+        posts: {
+            type: new GraphQLList(PostType),
+            resolve(parent, args){
+
+            },
+        },
+        authors: {
+            type: new GraphQLList(AuthorType),
+            resolve(parent, args){
+
+            },
+        }       
     }
 });
 
